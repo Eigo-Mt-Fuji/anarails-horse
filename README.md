@@ -37,19 +37,19 @@ bundle exec rails db:migrate
 ## Data Sample
 
 ```
-19 # 年
-01 # 月
-05 # 日
-京都 # 場所
-11 # レース
-京都金杯ＨG3 # 競馬場
-芝 # 馬場状態
-1600 # 距離
-17 # 頭数	
-15:45 # 出走時間
-2, a1
-1, a2
-1, a3
+19, # 年
+01, # 月
+05, # 日
+京都, # 場所
+11, # レース
+京都金杯ＨG3, # 競馬場
+芝, # 馬場状態
+1600, # 距離
+17, # 頭数	
+15:45, # 出走時間
+2, # a1
+1, # a2
+1, # a3
 サラキア, # 名前
 牝, # 性別
 4, # 年齢
@@ -60,9 +60,9 @@ bundle exec rails db:migrate
 2, # 人気
 4.8, # オッズ
 95.3, # タイム
-0, a4
-0, a5
-6,9, a6
+0, # a4
+0, # a5
+6,9, # a6
 中団, # 位置取り
 35.0, # 上りタイム
 8, # a7
@@ -71,17 +71,70 @@ bundle exec rails db:migrate
 0, # a8
 シルクレーシング, # 馬主
 ノーザンファーム, # 牧場
-ディープインパクト,血統（父）
+ディープインパクト, # 血統（父）
 Lomitas # 血統（母父）
 ```
 
 
-## Load data (run load-data.sql, sample data(197 records) will be loaded into insights table on your local mysql server)
+## Load data command (run load-data.sql, sample data(197 records) will be loaded into insights table on your local mysql server)
+
+' command 
 
 ```bash
 MYSQL_PWD={password} mysql -hlocalhost -uroot -Danarails_horse_dev --local-infile=1 < load-data.sql
 MYSQL_PWD={password} mysql -hlocalhost -uroot -Danarails_horse_dev
+```
 
+* load-data.sql is following (exist in this repository with hanshinhinba19-utf8.csv)
+
+```sql
+LOAD DATA LOCAL INFILE
+  './hanshinhinba19-utf8.csv'
+INTO TABLE
+  insights
+FIELDS TERMINATED BY ','
+LINES TERMINATED BY '\n' (
+  year,
+  month,
+  day,
+  location,
+  race_number,
+  race_name,
+  course_status,
+  distance,
+  candidacy,
+  post_time,
+  a1,
+  a2,
+  a3,
+  horse_name,
+  horse_gender,
+  horse_age,
+  jockey,
+  weight_carry,
+  order_finish,
+  order_difference,
+  popular,
+  odds,
+  record_time,
+  a4,
+  a5,
+  a6,
+  a7,
+  position,
+  up_time,
+  a8,
+  trainer,
+  traing_center,
+  a9,
+  owner,
+  farm,
+  sire,
+  broodmare_sire
+)
+SET
+  created_at = CURRENT_TIMESTAMP,
+  updated_at = CURRENT_TIMESTAMP;
 ```
 
 ## SQL for selecting data and checking on mysql-cli or any client software
@@ -117,12 +170,16 @@ bundle exec rails assets:precompile
 ## Heroku
 
 ```bash
-heroku create anarails-horse
-heroku addons:add cleardb:ignite
-heroku config:get CLEARDB_DATABASE_URL
-heroku config:set DATABASE_URL={value of above CLEARDB_DATABASE_URL after replace mysql:// to mysql2://} #
-heroku run rails db:create
-$ mysqldump -hlocalhost -uroot -proot --no-create-info anarails_horse_dev insights  > anarails_horse_dev.sql
-$ mysql -h{DATABASE_URL host} -u{DATABASE_URL user} -p{DATABASE_URL password} -D{DATABASE_URL dbname} < anarails_horse_dev.sql
+heroku login # only first
+heroku create anarails-horse # only first
+heroku addons:add cleardb:ignite # only first
+heroku config:get CLEARDB_DATABASE_URL # only first
+heroku config:set DATABASE_URL={value of above CLEARDB_DATABASE_URL after replace mysql:// to mysql2://} # only first
+git add ./ # if you have any changes
+git commit -m "init" # if you have any changes
+git push heroku master # first time you need to do, also needed if you have any changes.
+heroku run rails db:create # only first
+$ mysqldump -hlocalhost -uroot -proot --no-create-info anarails_horse_dev insights  > anarails_horse_dev.sql # only first / check database anarails_horse_dev exists(and csv data is loaded)
+$ mysql -h{DATABASE_URL host} -u{DATABASE_URL user} -p{DATABASE_URL password} -D{DATABASE_URL dbname} < anarails_horse_dev.sql # only first
 ```
 
