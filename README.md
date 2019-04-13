@@ -1,16 +1,64 @@
 # README
+## About
+
+* JRA data analysis
+* [Sample data](./hanshinhinba19-utf8.csv)
+
 ## Command 
 
-```
+* Add mysql2 gem
+
+```bash
 vi Gemfile # add mysql2
-vi config/database.yml # fix connection
-bundle exec db:create
-bundle exec rails db:create
-bundle exec rails db:migrate
-bundle exec rails g scaffold Insight year:text month:text day:text location:text race_name:text course_status:text distance:integer candidacy:integer post_time:string a1:text a2:text a3:text horse_name:text horse_gender:text horse_age:integer jockey:text weight_carry:float order_finish:integer order_difference:float popular:integer odds:integer time:text a4:text a5:text a6:text position:text up_time:text a7:text trainer:text traing_center:text a8:text owner:text farm:text sire:text broodmare_sire:text
 ```
 
-## Data Format
+* Configure database  / Create database
+
+```bash
+vi config/database.yml  # assume  host is loadlhost, port is 3306, dbname is anarails_horse_{environment}, using root user/password
+bundle exec rails db:create
+```
+
+* Scaffold
+
+```bash
+bundle exec rails g scaffold Insight year:text month:text day:text location:text race_number:integer race_name:text a0:text course_status:text distance:integer candidacy:integer post_time:string a1:text a2:text a3:text horse_name:text horse_gender:text horse_age:integer jockey:text weight_carry:float order_finish:integer order_difference:float popular:integer odds:float record_time:text a4:text a5:text a6:text a7:text position:text up_time:text a8:text trainer:text traing_center:text a9:text  owner:text farm:text sire:text broodmare_sire:text
+bundle exec rails db:migrate
+```
+
+* Load data
+
+```bash
+MYSQL_PWD={password} mysql -hlocalhost -uroot -Danarails_horse_dev --local-infile=1 < load-data.sql
+MYSQL_PWD={password} mysql -hlocalhost -uroot -Danarails_horse_dev 
+
+```
+
+* Sample SELECT SQL
+
+```sql
+select 
+  concat(location, race_name, " ", race_number, "R") as race, 
+  concat(year, "-", month, "-", day, " ", post_time) as race_at, 
+  concat(course_status, distance, "m") as course, 
+  concat(order_finish, " 着") as result, 
+  concat(horse_name, horse_gender, horse_age) as horse, 
+  concat(popular, "番人気") as popular,
+  odds,
+  record_time,
+  up_time,
+  position,
+  sire,
+  broodmare_sire,
+  jockey, 
+  trainer
+from 
+  insights
+where 
+  order_finish != 0;
+```
+
+## Note: Data Format
 
 ```
 19 # 年
@@ -51,3 +99,26 @@ bundle exec rails g scaffold Insight year:text month:text day:text location:text
 Lomitas # 血統（母父）
 ```
 
+## SQL
+
+```
+select
+  concat(location, race_name, " ", race_number, "R") as race,
+  concat(year, "-", month, "-", day, " ", post_time) as race_at,
+  concat(course_status, distance, "m") as course,
+  concat(order_finish, " 着") as result,
+  concat(horse_name, horse_gender, horse_age) as horse,
+  concat(popular, "番人気") as popular,
+  odds,
+  record_time,
+  up_time,
+  position,
+  sire,
+  broodmare_sire,
+  jockey,
+  trainer
+from
+  insights
+where
+  order_finish != 0;
+```

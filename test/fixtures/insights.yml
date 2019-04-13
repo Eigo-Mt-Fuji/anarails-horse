@@ -5,7 +5,9 @@ one:
   month: MyText
   day: MyText
   location: MyText
+  race_number: 1
   race_name: MyText
+  a0: MyText
   course_status: MyText
   distance: 1
   candidacy: 1
@@ -21,17 +23,18 @@ one:
   order_finish: 1
   order_difference: 1.5
   popular: 1
-  odds: 1
-  time: MyText
+  odds: 1.5
+  record_time: MyText
   a4: MyText
   a5: MyText
   a6: MyText
+  a7: MyText
   position: MyText
   up_time: MyText
-  a7: MyText
+  a8: MyText
   trainer: MyText
   traing_center: MyText
-  a8: MyText
+  a9: MyText
   owner: MyText
   farm: MyText
   sire: MyText
@@ -42,7 +45,9 @@ two:
   month: MyText
   day: MyText
   location: MyText
+  race_number: 1
   race_name: MyText
+  a0: MyText
   course_status: MyText
   distance: 1
   candidacy: 1
@@ -58,17 +63,18 @@ two:
   order_finish: 1
   order_difference: 1.5
   popular: 1
-  odds: 1
-  time: MyText
+  odds: 1.5
+  record_time: MyText
   a4: MyText
   a5: MyText
   a6: MyText
+  a7: MyText
   position: MyText
   up_time: MyText
-  a7: MyText
+  a8: MyText
   trainer: MyText
   traing_center: MyText
-  a8: MyText
+  a9: MyText
   owner: MyText
   farm: MyText
   sire: MyText

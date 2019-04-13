@@ -5,7 +5,9 @@ class CreateInsights < ActiveRecord::Migration[5.2]
       t.text :month
       t.text :day
       t.text :location
+      t.integer :race_number
       t.text :race_name
+      t.text :a0
       t.text :course_status
       t.integer :distance
       t.integer :candidacy
@@ -21,17 +23,18 @@ class CreateInsights < ActiveRecord::Migration[5.2]
       t.integer :order_finish
       t.float :order_difference
       t.integer :popular
-      t.integer :odds
-      t.text :time
+      t.float :odds
+      t.text :record_time
       t.text :a4
       t.text :a5
       t.text :a6
+      t.text :a7
       t.text :position
       t.text :up_time
-      t.text :a7
+      t.text :a8
       t.text :trainer
       t.text :traing_center
-      t.text :a8
+      t.text :a9
       t.text :owner
       t.text :farm
       t.text :sire

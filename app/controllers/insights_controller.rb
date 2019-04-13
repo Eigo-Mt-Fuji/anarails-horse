@@ -69,6 +69,6 @@ class InsightsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def insight_params
-      params.require(:insight).permit(:year, :month, :day, :location, :race_name, :course_status, :distance, :candidacy, :post_time, :a1, :a2, :a3, :horse_name, :horse_gender, :horse_age, :jockey, :weight_carry, :order_finish, :order_difference, :popular, :odds, :time, :a4, :a5, :a6, :position, :up_time, :a7, :trainer, :traing_center, :a8, :owner, :farm, :sire, :broodmare_sire)
+      params.require(:insight).permit(:year, :month, :day, :location, :race_number, :race_name, :a0, :course_status, :distance, :candidacy, :post_time, :a1, :a2, :a3, :horse_name, :horse_gender, :horse_age, :jockey, :weight_carry, :order_finish, :order_difference, :popular, :odds, :record_time, :a4, :a5, :a6, :a7, :position, :up_time, :a8, :trainer, :traing_center, :a9, :owner, :farm, :sire, :broodmare_sire)
     end
 end
