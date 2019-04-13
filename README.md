@@ -1,7 +1,10 @@
 w# README
-## About
+## URL
+* https://anarails-horse.herokuapp.com/insights
 
-* JRA data analysis
+## About
+* JRA data 
+* Rails / MySQL / Bootstrap / Heroku
 * [Sample data](./hanshinhinba19-utf8.csv)
 
 ## Reference
