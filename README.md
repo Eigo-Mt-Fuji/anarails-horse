@@ -133,3 +133,12 @@ where
 ```
 bundle exec rails assets:precompile
 ```
+
+## Heroku
+
+```bash
+heroku create anarails-horse
+heroku addons:add cleardb:ignite
+heroku config:get CLEARDB_DATABASE_URL
+```
+
