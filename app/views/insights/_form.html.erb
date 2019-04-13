@@ -1,0 +1,192 @@
+<%= form_with(model: insight, local: true) do |form| %>
+  <% if insight.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(insight.errors.count, "error") %> prohibited this insight from being saved:</h2>
+
+      <ul>
+      <% insight.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :year %>
+    <%= form.text_area :year %>
+  </div>
+
+  <div class="field">
+    <%= form.label :month %>
+    <%= form.text_area :month %>
+  </div>
+
+  <div class="field">
+    <%= form.label :day %>
+    <%= form.text_area :day %>
+  </div>
+
+  <div class="field">
+    <%= form.label :location %>
+    <%= form.text_area :location %>
+  </div>
+
+  <div class="field">
+    <%= form.label :race_name %>
+    <%= form.text_area :race_name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :course_status %>
+    <%= form.text_area :course_status %>
+  </div>
+
+  <div class="field">
+    <%= form.label :distance %>
+    <%= form.number_field :distance %>
+  </div>
+
+  <div class="field">
+    <%= form.label :candidacy %>
+    <%= form.number_field :candidacy %>
+  </div>
+
+  <div class="field">
+    <%= form.label :post_time %>
+    <%= form.text_field :post_time %>
+  </div>
+
+  <div class="field">
+    <%= form.label :a1 %>
+    <%= form.text_area :a1 %>
+  </div>
+
+  <div class="field">
+    <%= form.label :a2 %>
+    <%= form.text_area :a2 %>
+  </div>
+
+  <div class="field">
+    <%= form.label :a3 %>
+    <%= form.text_area :a3 %>
+  </div>
+
+  <div class="field">
+    <%= form.label :horse_name %>
+    <%= form.text_area :horse_name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :horse_gender %>
+    <%= form.text_area :horse_gender %>
+  </div>
+
+  <div class="field">
+    <%= form.label :horse_age %>
+    <%= form.number_field :horse_age %>
+  </div>
+
+  <div class="field">
+    <%= form.label :jockey %>
+    <%= form.text_area :jockey %>
+  </div>
+
+  <div class="field">
+    <%= form.label :weight_carry %>
+    <%= form.text_field :weight_carry %>
+  </div>
+
+  <div class="field">
+    <%= form.label :order_finish %>
+    <%= form.number_field :order_finish %>
+  </div>
+
+  <div class="field">
+    <%= form.label :order_difference %>
+    <%= form.text_field :order_difference %>
+  </div>
+
+  <div class="field">
+    <%= form.label :popular %>
+    <%= form.number_field :popular %>
+  </div>
+
+  <div class="field">
+    <%= form.label :odds %>
+    <%= form.number_field :odds %>
+  </div>
+
+  <div class="field">
+    <%= form.label :time %>
+    <%= form.text_area :time %>
+  </div>
+
+  <div class="field">
+    <%= form.label :a4 %>
+    <%= form.text_area :a4 %>
+  </div>
+
+  <div class="field">
+    <%= form.label :a5 %>
+    <%= form.text_area :a5 %>
+  </div>
+
+  <div class="field">
+    <%= form.label :a6 %>
+    <%= form.text_area :a6 %>
+  </div>
+
+  <div class="field">
+    <%= form.label :position %>
+    <%= form.text_area :position %>
+  </div>
+
+  <div class="field">
+    <%= form.label :up_time %>
+    <%= form.text_area :up_time %>
+  </div>
+
+  <div class="field">
+    <%= form.label :a7 %>
+    <%= form.text_area :a7 %>
+  </div>
+
+  <div class="field">
+    <%= form.label :trainer %>
+    <%= form.text_area :trainer %>
+  </div>
+
+  <div class="field">
+    <%= form.label :traing_center %>
+    <%= form.text_area :traing_center %>
+  </div>
+
+  <div class="field">
+    <%= form.label :a8 %>
+    <%= form.text_area :a8 %>
+  </div>
+
+  <div class="field">
+    <%= form.label :owner %>
+    <%= form.text_area :owner %>
+  </div>
+
+  <div class="field">
+    <%= form.label :farm %>
+    <%= form.text_area :farm %>
+  </div>
+
+  <div class="field">
+    <%= form.label :sire %>
+    <%= form.text_area :sire %>
+  </div>
+
+  <div class="field">
+    <%= form.label :broodmare_sire %>
+    <%= form.text_area :broodmare_sire %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

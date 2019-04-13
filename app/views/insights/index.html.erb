@@ -1,0 +1,95 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Insights</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Year</th>
+      <th>Month</th>
+      <th>Day</th>
+      <th>Location</th>
+      <th>Race name</th>
+      <th>Course status</th>
+      <th>Distance</th>
+      <th>Candidacy</th>
+      <th>Post time</th>
+      <th>A1</th>
+      <th>A2</th>
+      <th>A3</th>
+      <th>Horse name</th>
+      <th>Horse gender</th>
+      <th>Horse age</th>
+      <th>Jockey</th>
+      <th>Weight carry</th>
+      <th>Order finish</th>
+      <th>Order difference</th>
+      <th>Popular</th>
+      <th>Odds</th>
+      <th>Time</th>
+      <th>A4</th>
+      <th>A5</th>
+      <th>A6</th>
+      <th>Position</th>
+      <th>Up time</th>
+      <th>A7</th>
+      <th>Trainer</th>
+      <th>Traing center</th>
+      <th>A8</th>
+      <th>Owner</th>
+      <th>Farm</th>
+      <th>Sire</th>
+      <th>Broodmare sire</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @insights.each do |insight| %>
+      <tr>
+        <td><%= insight.year %></td>
+        <td><%= insight.month %></td>
+        <td><%= insight.day %></td>
+        <td><%= insight.location %></td>
+        <td><%= insight.race_name %></td>
+        <td><%= insight.course_status %></td>
+        <td><%= insight.distance %></td>
+        <td><%= insight.candidacy %></td>
+        <td><%= insight.post_time %></td>
+        <td><%= insight.a1 %></td>
+        <td><%= insight.a2 %></td>
+        <td><%= insight.a3 %></td>
+        <td><%= insight.horse_name %></td>
+        <td><%= insight.horse_gender %></td>
+        <td><%= insight.horse_age %></td>
+        <td><%= insight.jockey %></td>
+        <td><%= insight.weight_carry %></td>
+        <td><%= insight.order_finish %></td>
+        <td><%= insight.order_difference %></td>
+        <td><%= insight.popular %></td>
+        <td><%= insight.odds %></td>
+        <td><%= insight.time %></td>
+        <td><%= insight.a4 %></td>
+        <td><%= insight.a5 %></td>
+        <td><%= insight.a6 %></td>
+        <td><%= insight.position %></td>
+        <td><%= insight.up_time %></td>
+        <td><%= insight.a7 %></td>
+        <td><%= insight.trainer %></td>
+        <td><%= insight.traing_center %></td>
+        <td><%= insight.a8 %></td>
+        <td><%= insight.owner %></td>
+        <td><%= insight.farm %></td>
+        <td><%= insight.sire %></td>
+        <td><%= insight.broodmare_sire %></td>
+        <td><%= link_to 'Show', insight %></td>
+        <td><%= link_to 'Edit', edit_insight_path(insight) %></td>
+        <td><%= link_to 'Destroy', insight, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Insight', new_insight_path %>
