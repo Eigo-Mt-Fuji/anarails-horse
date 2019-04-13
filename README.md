@@ -27,46 +27,14 @@ vi config/database.yml  # assume  host is loadlhost, port is 3306, dbname is ana
 bundle exec rails db:create
 ```
 
-* Scaffold
+* Scaffold / Migrate(Insights table will be created)
 
 ```bash
 bundle exec rails g scaffold Insight year:text month:text day:text location:text race_number:integer race_name:text a0:text course_status:text distance:integer candidacy:integer post_time:string a1:text a2:text a3:text horse_name:text horse_gender:text horse_age:integer jockey:text weight_carry:float order_finish:integer order_difference:float popular:integer odds:float record_time:text a4:text a5:text a6:text a7:text position:text up_time:text a8:text trainer:text traing_center:text a9:text  owner:text farm:text sire:text broodmare_sire:text
 bundle exec rails db:migrate
 ```
 
-* Load data
-
-```bash
-MYSQL_PWD={password} mysql -hlocalhost -uroot -Danarails_horse_dev --local-infile=1 < load-data.sql
-MYSQL_PWD={password} mysql -hlocalhost -uroot -Danarails_horse_dev 
-
-```
-
-* Sample SELECT SQL
-
-```sql
-select 
-  concat(location, race_name, " ", race_number, "R") as race, 
-  concat(year, "-", month, "-", day, " ", post_time) as race_at, 
-  concat(course_status, distance, "m") as course, 
-  concat(order_finish, " 着") as result, 
-  concat(horse_name, horse_gender, horse_age) as horse, 
-  concat(popular, "番人気") as popular,
-  odds,
-  record_time,
-  up_time,
-  position,
-  sire,
-  broodmare_sire,
-  jockey, 
-  trainer
-from 
-  insights
-where 
-  order_finish != 0;
-```
-
-## Note: Data Format
+## Data Sample
 
 ```
 19 # 年
@@ -107,7 +75,16 @@ where
 Lomitas # 血統（母父）
 ```
 
-## SQL (select data and checking on mysql-cli or any client software, please)
+
+## Load data (run load-data.sql, sample data(197 records) will be loaded into insights table on your local mysql server)
+
+```bash
+MYSQL_PWD={password} mysql -hlocalhost -uroot -Danarails_horse_dev --local-infile=1 < load-data.sql
+MYSQL_PWD={password} mysql -hlocalhost -uroot -Danarails_horse_dev
+
+```
+
+## SQL for selecting data and checking on mysql-cli or any client software
 
 ```
 select
