@@ -1,4 +1,4 @@
-# README
+w# README
 ## About
 
 * JRA data analysis
@@ -140,5 +140,9 @@ bundle exec rails assets:precompile
 heroku create anarails-horse
 heroku addons:add cleardb:ignite
 heroku config:get CLEARDB_DATABASE_URL
+heroku config:set DATABASE_URL={value of above CLEARDB_DATABASE_URL after replace mysql:// to mysql2://} #
+heroku run rails db:create
+$ mysqldump -hlocalhost -uroot -proot --no-create-info anarails_horse_dev insights  > anarails_horse_dev.sql
+$ mysql -h{DATABASE_URL host} -u{DATABASE_URL user} -p{DATABASE_URL password} -D{DATABASE_URL dbname} < anarails_horse_dev.sql
 ```
 
