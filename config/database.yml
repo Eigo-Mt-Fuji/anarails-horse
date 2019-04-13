@@ -28,4 +28,4 @@ test:
 
 production:
   <<: *default
-  database: anarails_horse_production
+  url: <%= ENV['DATABASE_URL'] %>

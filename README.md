@@ -4,7 +4,12 @@
 * JRA data analysis
 * [Sample data](./hanshinhinba19-utf8.csv)
 
-## Command 
+## Reference
+
+* Keywords Reference
+  - http://www.jra.go.jp/keiba/overseas/yougo/c10040_list.html
+
+## Getting Started 
 
 * Add mysql2 gem
 
@@ -99,16 +104,16 @@ where
 Lomitas # 血統（母父）
 ```
 
-## SQL
+## SQL (select data and checking on mysql-cli or any client software, please)
 
 ```
 select
-  concat(location, race_name, " ", race_number, "R") as race,
-  concat(year, "-", month, "-", day, " ", post_time) as race_at,
-  concat(course_status, distance, "m") as course,
-  concat(order_finish, " 着") as result,
-  concat(horse_name, horse_gender, horse_age) as horse,
-  concat(popular, "番人気") as popular,
+  concat(location, race_name, " ", race_number, "R") as race_display,
+  concat(year, "-", month, "-", day, " ", post_time) as race_at_display,
+  concat(course_status, distance, "m") as course_display,
+  concat(order_finish, " 着") as order_display,
+  concat(horse_name, horse_gender, horse_age) as horse_display,
+  concat(popular, "番人気") as popular_display,
   odds,
   record_time,
   up_time,
@@ -121,4 +126,10 @@ from
   insights
 where
   order_finish != 0;
+```
+
+## CSS
+
+```
+bundle exec rails assets:precompile
 ```
