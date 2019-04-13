@@ -61,4 +61,5 @@ end
 
 gem 'jquery-rails'
 gem 'jquery-ui-rails'
-gem 'bootstrap-sass'
+gem "bootstrap-sass", ">= 3.4.1"
+
