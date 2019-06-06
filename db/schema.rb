@@ -12,7 +12,7 @@
 
 ActiveRecord::Schema.define(version: 2019_04_13_065635) do
 
-  create_table "insights", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "insights", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.text "year"
     t.text "month"
     t.text "day"

@@ -4,6 +4,12 @@ class InsightsController < ApplicationController
   # GET /insights
   # GET /insights.json
   def index
+    hoge = 100
+    
+    if hoge === 100
+      puts "test 100"
+    end
+
     # 着順の属性が0のデータは一旦取得しない
     ignore_order_finish = 0
     @insights = Insight.where("order_finish != ?", ignore_order_finish).order(horse_name: :asc, id: :desc)

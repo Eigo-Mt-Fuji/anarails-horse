@@ -1,5 +1,6 @@
+USE anarails_horse_dev;
 LOAD DATA LOCAL INFILE 
-  './hanshinhinba19-utf8.csv' 
+  './docker/hanshinhinba19-utf8.csv' 
 INTO TABLE 
   insights
 FIELDS TERMINATED BY ',' 

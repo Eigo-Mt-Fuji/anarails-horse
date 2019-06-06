@@ -4,3 +4,8 @@
 require_relative 'config/application'
 
 Rails.application.load_tasks
+
+task :lint do
+  sh 'rubocop --fail-level=C -la'
+end
+

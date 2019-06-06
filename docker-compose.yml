@@ -1,0 +1,40 @@
+version: '3'
+services:
+  nginx:
+    container_name: nginx
+    build: docker/nginx
+    ports:
+      - '81:80'
+    depends_on:
+      - rails-app
+    volumes:
+      - ./docker/nginx/data:/var/log/nginx
+    links:
+      - rails-app
+  rails-app:
+    image: rails-app
+    build: .
+    command: sh ./docker/start.sh app-db 3306 root root 
+    ports:
+      - "3001:3000"
+      - "1235:1234"
+      - "26163:26162"
+    working_dir: /usr/local/src/anarails-horse
+    volumes:
+      - ".:/usr/local/src/anarails-horse"
+    depends_on:
+      - app-db
+    env_file:
+      - ./docker/rails-app/.env.local
+    environment:
+      - DEBUG=1
+  app-db:
+    image: mysql:5.7
+    command: mysqld --character-set-server=utf8 --collation-server=utf8_unicode_ci
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_HOST: localhost
+    ports:
+      - "33306:3306"
+    volumes:
+      - ./docker/initdb.d:/docker-entrypoint-initdb.d
